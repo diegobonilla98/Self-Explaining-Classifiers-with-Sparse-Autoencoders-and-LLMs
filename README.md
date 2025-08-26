@@ -2,6 +2,8 @@
 
 Turn an ordinary classifier into a self-explaining system. This project trains a standard classifier, learns a Sparse Autoencoder (SAE) on one of its later feature maps, summarizes each SAE neuron into a human concept, and uses those concepts to explain any single prediction in natural language.
 
+![](./assets/idea.png)
+
 The pipeline is fully implemented in these five scripts:
 
 - `train_standard_cnn.py`: trains a sketch classifier (ResNet-18 variant) on the TU-Berlin sketches dataset and saves a best checkpoint.
@@ -10,6 +12,7 @@ The pipeline is fully implemented in these five scripts:
 - `sae_summary_to_llm.py`: converts each neuron’s numeric summary into a short human‑readable concept using an LLM.
 - `why_did_you.py`: explains “why” the classifier picked a class for a given image by reading the image’s top-activating SAE neurons and assembling their human concepts.
 
+![](./assets/pipeline.png)
 
 ## Quickstart
 
@@ -221,5 +224,6 @@ After all steps, you should have:
 - `sae_summarize.py`: caches dense neuron activations, computes thresholds, PMI, logit‑lens \(W_{out} d_i^{\text{unstd}}\), and closed‑form \(\Delta^-\); exports JSONL + images.
 - `sae_summary_to_llm.py`: converts neuron stats into short natural‑language concepts with an LLM.
 - `why_did_you.py`: for a given image, surfaces the top neurons, their scores, top‑5 class confidences, and prints an overall explanation.
+
 
 
